@@ -1,4 +1,13 @@
-class Conta:
+from database import db
+from sqlalchemy import Column, Integer, String, Numeric
+
+class Conta(db.Model):
+
+    _id = Column('id', Integer(), primary_key=True)
+    _numero = Column('numero', String(255), nullable=False, unique=True)
+    _titular = Column('titular', String(255), nullable=False)
+    _saldo = Column('saldo', Numeric(), nullable=False)
+    _limite = Column('limite', Numeric(), nullable=False)
 
     def __init__(self, numero, titular, saldo, limite=1001.0, id=None):
         self._id = id
