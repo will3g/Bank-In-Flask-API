@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt">
+   <head>
+       <!-- Required meta tags -->
+       <meta charset="utf-8">
+
+       <!-- Bootstrap CSS -->
+       <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}" > 
+   </head>
+   <body>
+       <div class="container">
+           {% if update %}
+                <h1>Edite contas :D</h1>
+           {% else %}
+                <h1>Cadastro de contas</h1>
+           {% endif %}
+           <hr />
+
+           <form {% if update %} action="/contas/{{id}}/edit" {% else %} action="/contas/cria-conta" {% endif %}, method="post">
+               <div class="form-group col-sm-4">
+                   <label for="inputNumero">número</label>
+                   <input type="text" class="form-control" id="inputNumero" name="numero" placeholder="número" value="{{numero}}">
+               </div>
+               <div class="form-group col-sm-4">
+                   <label for="inputTitular">titular</label>
+                   <input type="text" class="form-control" id="inputTitular" name="titular" placeholder="titular" value="{{titular}}">
+               </div>
+ 
+               <div class="form-group col-sm-4">
+                   <label for="inputSaldo">saldo inicial</label>
+                   <input type="text" class="form-control" id="inputSaldo" name="saldo" placeholder="0.0" value="{{saldo}}">
+               </div>
+               <div class="form-group col-sm-4">
+                   <label for="inputLimite">limite</label>
+                   <input type="text" class="form-control" id="inputLimite" name="limite" placeholder="0.0" value="{{limite}}">
+               </div>
+               {% if update %}
+                    <button type="submit" class="btn btn-primary">Editar conta :D</button>
+               {% else %}
+                    <button type="submit" class="btn btn-primary">Criar conta :D</button>
+               {% endif %}
+           </form>
+
+       </div>  
+   </body>
+</html>
